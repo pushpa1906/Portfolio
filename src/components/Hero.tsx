@@ -7,6 +7,8 @@ const tags = [
   { label: "Frontend Development", icon: Zap },
   { label: "APIs", icon: Database },
   { label: "Data-Driven Projects", icon: BarChart3 },
+  { label: "Content Management System", icon: Globe },
+  { label: "3+ years experience", icon: Zap },
 ];
 
 export default function Hero() {
