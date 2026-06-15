@@ -25,9 +25,7 @@ export default function Education() {
           <p className="section-label mb-6">EDUCATION</p>
 
           <h2 className="display-heading text-5xl text-ink dark:text-[#F3F4F6] md:text-7xl">
-            Academic
-            <br />
-            foundation.
+            Academic foundation.
           </h2>
         </Reveal>
 

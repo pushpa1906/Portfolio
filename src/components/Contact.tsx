@@ -106,7 +106,7 @@ export default function Contact() {
                   <div className="flex items-start gap-4">
                     <Icon
                       size={24}
-                      className="mt-1 text-[#355070]"
+                      className="mt-1 text-[#355070] dark:text-[#8FA8C7]"
                     />
 
                     <div>
@@ -126,6 +126,7 @@ export default function Contact() {
                           text-base
                           font-normal
                           text-slate-500
+                          dark:text-[#9CA3AF]
                         "
                       >
                         {contact.value}
@@ -156,7 +157,7 @@ export default function Contact() {
             </p>
 
             <p>
-              Software Engineer • Web Developer
+              Computer Science Graduate
             </p>
           </div>
         </motion.div>

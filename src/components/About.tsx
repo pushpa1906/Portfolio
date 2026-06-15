@@ -77,10 +77,13 @@ export default function About() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <p className="section-label mb-3">About Me</p>
-          <h2 className="display-heading text-5xl md:text-6xl">
-            Software Engineer
+          <p className="section-label mb-4">
+            ABOUT
+          </p>
+          <h2 className="display-heading text-5xl text-ink dark:text-[#F3F4F6] md:text-7xl">
+            Turning curiosity into experience. 
           </h2>
+
         </motion.div>
 
         {/* Main Content */}
@@ -94,15 +97,30 @@ export default function About() {
             className="space-y-6"
           >
             <p className="text-lg leading-relaxed text-muted">
-              I'm a passionate software engineer with a <span className="font-semibold">Master's degree in Computer Science from UT Tyler</span>. I specialize in building <span className="font-semibold">scalable web applications with modern technologies</span>, with a focus on clean code and user-centric design.
+              What began as an interest in understanding how technology works evolved into a passion for software development and web technologies. Earning a{" "}
+              <span className="font-semibold">
+                Master's degree in Computer Science from the University of Texas at Tyler
+              </span>{" "}
+              provided opportunities to further explore modern technologies, software development, and data-driven solutions.
             </p>
 
             <p className="text-lg leading-relaxed text-muted">
-              My journey in tech started with a curiosity about how things work under the hood. Over the years, I've developed expertise in <span className="font-semibold">web development, frontend and backend technologies, APIs, and data-driven applications</span>. I'm always eager to learn new technologies and tackle challenging problems.
+              Over the years, I have contributed to{" "}
+              <span className="font-semibold">
+                web applications, technology-driven projects, and digital platforms
+              </span>{" "}
+              while continuously expanding my technical knowledge. I enjoy creating
+              solutions that are practical, user-focused, and designed to solve
+              real-world needs.
             </p>
 
             <p className="text-lg leading-relaxed text-muted">
-              Beyond writing code, I'm interested in <span className="font-semibold">contributing to open-source projects, sharing knowledge with the community, and building software that makes a meaningful impact</span>. I believe in continuous learning and collaborative development.
+              I value{" "}
+              <span className="font-semibold">
+                continuous learning, collaboration, and professional growth
+              </span>.
+              Each project presents an opportunity to deepen my knowledge, refine my
+              skills, and contribute to meaningful outcomes through technology.
             </p>
 
             {/* Experience Highlights */}
@@ -112,7 +130,7 @@ export default function About() {
               <ExperienceHighlight
                 icon={Globe}
                 title="Web Development"
-                description="Full web development expertise including responsive design, frontend frameworks (React, TypeScript), backend services (Node.js), and modern web technologies. Building complete web applications from concept to deployment."
+                description="Full web development expertise including responsive design, frontend frameworks (React, TypeScript), backend (Django), and modern web technologies. Building complete web applications from concept to deployment."
                 delay={0.3}
               />
               

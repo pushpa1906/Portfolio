@@ -46,7 +46,7 @@ export default function Navbar() {
 
           {/* Navigation */}
 
-          <div className="hidden gap-10 md:flex items-center">
+          <div className="hidden gap-16 md:flex items-center">
             {links.map((item) => (
               <a
                 key={item}
@@ -65,11 +65,15 @@ export default function Navbar() {
                 {item}
               </a>
             ))}
-            <ThemeToggle />
+            
           </div>
 
           {/* CTA */}
-
+          <div className="gap-10 flex ">
+            <div>
+              <ThemeToggle />
+            </div>
+          
           <motion.a
             whileHover={{
               scale: 1.03,
@@ -96,6 +100,7 @@ export default function Navbar() {
           >
             Contact
           </motion.a>
+          </div>
         </nav>
       </div>
     </header>

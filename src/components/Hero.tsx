@@ -106,7 +106,7 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="mt-10">
+            {/*<div className="mt-10">
               <div className="mb-8 h-px w-28 bg-gold" />
 
               <p
@@ -121,7 +121,7 @@ export default function Hero() {
                 Building software, web applications,
                 and digital experiences with modern technologies.
               </p>
-            </div>
+            </div>*/}
 
             {/* Tags - Horizontal */}
             <div className="mt-8 flex flex-wrap gap-3">
@@ -197,7 +197,7 @@ export default function Hero() {
               <motion.a
                 whileHover={{ y: -3 }}
                 whileTap={{ scale: 0.98 }}
-                href="/resume.pdf"
+                href="\PushpajaBommisetty_Resume_June2026.pdf"
                 className="
                   flex
                   items-center

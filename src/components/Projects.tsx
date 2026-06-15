@@ -13,9 +13,7 @@ export default function Projects() {
           <p className="section-label mb-6">PROJECTS</p>
 
           <h2 className="display-heading text-5xl text-ink dark:text-[#F3F4F6] md:text-7xl">
-            Projects that
-            <br />
-            solve real problems.
+           Learning through building
           </h2>
         </Reveal>
 

@@ -53,65 +53,70 @@ export const experience = [
 
 export const projects = [
   {
-    title: "Health Connect",
-    subtitle: "Healthcare Database Management System",
-    description:
-      "Designed and developed a healthcare database system supporting patient records, provider management, billing workflows, and healthcare analytics.",
+  title: "Health Database Management System",
+  subtitle: "Database Engineering Project",
+  description:
+    "Designed and implemented a normalized relational database for healthcare data management, leveraging MySQL, EER modeling, and advanced SQL queries to support analytics, reporting, and operational insights.",
 
-    technologies: ["MySQL", "SQL", "Database Design", "ER Modeling"],
+  technologies: [
+    "MySQL",
+    "SQL",
+    "Database Modeling",
+    "EER Diagrams",
+    "Data Analysis",
+  ],
 
-    highlights: [
-      "Designed 30+ interconnected tables",
-      "Implemented normalized 3NF schema",
-      "Created analytical SQL reports",
-      "Supported healthcare data workflows",
-    ],
-  },
-
-  {
-    title: "Heart Disease Prediction",
-    subtitle: "Machine Learning Project",
-    description:
-      "Machine learning project focused on predicting heart disease risk using healthcare datasets and predictive modeling techniques.",
-
-    technologies: [
-      "Python",
-      "Pandas",
-      "NumPy",
-      "Machine Learning",
-      "Matplotlib",
-    ],
-
-    highlights: [
-      "Data cleaning and preprocessing",
-      "Model training and evaluation",
-      "Exploratory data analysis",
-      "Strong predictive accuracy",
-    ],
-  },
+  highlights: [
+    "20+ normalized tables",
+    "Foreign key relationships",
+    "Optimized reporting views",
+    "Operational analytics",
+  ],
+},
 
   {
-    title: "Fake Currency Detection",
-    subtitle: "Computer Vision Project",
-    description:
-      "Machine learning-based system for identifying counterfeit currency using image analysis and classification techniques.",
+  title: "Heart Disease Prediction",
+  subtitle: "Machine Learning Project",
+  description:
+    "Developed a predictive analytics system using supervised machine learning algorithms to assess the risk of heart disease based on patient clinical data. Performed data preprocessing, exploratory analysis, and model evaluation to improve prediction accuracy.",
 
-    technologies: [
-      "Python",
-      "Computer Vision",
-      "Machine Learning",
-      "NumPy",
-      "Pandas",
-    ],
+  technologies: [
+    "Python",
+    "Machine Learning",
+    "Pandas",
+    "NumPy",
+    "Scikit-learn",
+  ],
 
-    highlights: [
-      "Image preprocessing",
-      "Feature extraction",
-      "Classification models",
-      "Accuracy evaluation",
-    ],
-  },
-];
+  highlights: [
+    "Clinical data analysis",
+    "Exploratory data analysis",
+    "Multiple model evaluation",
+    "95% accuracy with Random Forest",
+  ],
+},
+
+  {
+  title: "Fake Currency Detection",
+  subtitle: "Image Processing Project",
+  description:
+    "Developed a MATLAB-based counterfeit currency detection system using image processing techniques to distinguish counterfeit Indian banknotes from genuine currency notes.",
+
+  technologies: [
+    "MATLAB",
+    "Image Processing",
+    "Computer Vision",
+    "Digital Image Analysis",
+  ],
+
+  highlights: [
+    "Grayscale conversion",
+    "HSV color analysis",
+    "Edge detection",
+    "Segmented strip counting",
+  ],
+}
+]
 
 export const skillGroups = {
   Frontend: [

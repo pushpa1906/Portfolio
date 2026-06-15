@@ -22,6 +22,8 @@ import {
   SiGithub,
   SiPostman,
   SiPython,
+  SiFigma,
+  SiCanva,
 } from "react-icons/si";
 
 const skills = [
@@ -73,6 +75,9 @@ const skills = [
       "Postman",
       "Agile",
       "Jira",
+      "Figma",
+      "Canva",
+      "Photoshop",
     ],
   },
   {
@@ -95,9 +100,9 @@ const skills = [
     items: [
       "Testing",
       "Debugging",
-      "Cross-browser Compatibility",
-      "Performance",
-      "Accessibility",
+      "Performance Optimization",
+      "Usability",
+     "Accessibility"
     ],
   },
 ];
@@ -121,6 +126,16 @@ const techIcons: Record<
   GitHub: { icon: SiGithub, color: "#181717" },
   Postman: { icon: SiPostman, color: "#FF6C37" },
   Python: { icon: SiPython, color: "#3776AB" },
+  Figma: {
+  icon: SiFigma,
+  color: "#A259FF",
+},
+
+Canva: {
+  icon: SiCanva,
+  color: "#00C4CC",
+},
+
 };
 
 export default function Skills() {
@@ -202,9 +217,7 @@ export default function Skills() {
               md:text-7xl
             "
           >
-            Skills &
-            <br />
-            Expertise
+           Technologies behind the journey
           </h2>
 
           <p

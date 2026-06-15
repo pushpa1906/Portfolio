@@ -19,7 +19,7 @@ const experiences = [
     ],
 
     description:
-      "At Ceburu Systems, I contributed to the development of enterprise software applications designed to support operational and business workflows. My work focused on building modern frontend experiences, improving application usability, and developing features that enabled users to efficiently manage, visualize, and interact with complex datasets. I collaborated closely with development teams to deliver scalable solutions, enhance system functionality, and support continuous product improvements across multiple software platforms.",
+      "At Ceburu Systems, I contributed to the development of enterprise software applications designed to support operational and business workflows. My work focused on building modern frontend experiences, improving application usability, and developing user-focused features for managing, visualizing, and working with business data. I collaborated closely with development teams to deliver scalable solutions, enhance system functionality, and support continuous product improvements.",
 
     details: [
       "Developed responsive interfaces and reusable components using React, TypeScript, and modern web technologies.",
@@ -112,9 +112,7 @@ export default function Experience() {
             md:text-7xl
           "
         >
-          Building Through
-          <br />
-          Experience.
+         Career Chapters
         </h2>
 
         {/* Journey */}
