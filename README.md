@@ -67,7 +67,7 @@ npm run preview
 
 ## Live Website
 
-Portfolio URL: Coming Soon
+Portfolio URL: https://pushpajabommisetty-portfolio.vercel.app/
 
 ## Connect With Me
 

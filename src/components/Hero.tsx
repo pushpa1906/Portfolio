@@ -1,19 +1,46 @@
 import { motion } from "framer-motion";
-import { ArrowDownRight, Download,  Code2, Globe, Zap, Database, BarChart3 } from "lucide-react";
+import { ArrowDownRight, Download,  Code2, Globe, Zap, Database, BarChart3, Sparkles } from "lucide-react";
 
 const tags = [
-  { label: "Software Engineering", icon: Code2 },
-  { label: "Web Development", icon: Globe },
-  { label: "Frontend Development", icon: Zap },
-  { label: "APIs", icon: Database },
-  { label: "Data-Driven Projects", icon: BarChart3 },
-  { label: "Content Management System", icon: Globe },
-  { label: "3+ years experience", icon: Zap },
+  {
+    label: "Software Engineering",
+    icon: Code2,
+    mobile: true,
+  },
+  {
+    label: "Web Development",
+    icon: Globe,
+    mobile: true,
+  },
+  {
+    label: "Frontend Development",
+    icon: Zap,
+    mobile: true,
+  },
+  {
+    label: "APIs",
+    icon: Database,
+    mobile: false,
+  },
+  {
+    label: "Data-Driven Projects",
+    icon: BarChart3,
+    mobile: false,
+  },
+  {
+    label: "Content Management Systems",
+    icon: Globe,
+    mobile: true,
+  },
+  {
+    label: "3+ Years Experience",
+    icon: Sparkles,
+    mobile: true,
+  },
 ];
-
 export default function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden">
+    <section className="relative flex min-h-svh items-start overflow-hidden pt-24 pb-16 md:items-center md:pt-0 md:pb-0">
       {/* Background glows */}
       <div
         className="
@@ -56,7 +83,7 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-24">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6">
         <div className="grid items-start gap-12 lg:grid-cols-[1fr_1fr]">
           {/* Left - Description */}
           <motion.div
@@ -64,7 +91,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="relative">
+            <div className="relative mt-30">
               <span
                 className="
                   pointer-events-none
@@ -72,7 +99,7 @@ export default function Hero() {
                   -left-2
                   -top-16
                   hidden
-                  text-[9rem]
+                  text-[8rem]
                   font-black
                   leading-none
                   tracking-[-0.08em]
@@ -90,13 +117,15 @@ export default function Hero() {
                   className="
                     relative
                     z-10
+                    max-w-300
                     display-heading
                     hero-accent
-                    text-[4.8rem]
+                    text-[4rem]
+                    sm:text-[5rem]
+                    lg:text-[6rem]
                     leading-[0.85]
                     tracking-tight
-                    md:text-[8rem]
-                    xl:text-[10rem]
+                    text-bold
                   "
                 >
                   Pushpaja
@@ -124,20 +153,21 @@ export default function Hero() {
             </div>*/}
 
             {/* Tags - Horizontal */}
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-10 flex flex-wrap gap-3">
               {tags.map((tag, index) => {
                 const IconComponent = tag.icon;
+
                 return (
                   <motion.div
                     key={tag.label}
-                    initial={{ opacity: 0, y: 12 }}
+                    initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{
-                      delay: 0.35 + index * 0.08,
-                      duration: 0.45,
+                      duration: 0.5,
+                      delay: 0.8 + index * 0.08,
                     }}
-                    className="
-                      flex
+                    className={`
+                      ${!tag.mobile ? "hidden md:flex" : "flex"}
                       items-center
                       gap-2
                       rounded-full
@@ -150,15 +180,15 @@ export default function Hero() {
                       font-medium
                       text-[#355070]
                       backdrop-blur
+                      transition-all
                       hover:border-[#355070]
                       hover:bg-white
-                      transition-all
                       dark:border-[#2A3445]
                       dark:bg-[#161E2E]/70
                       dark:text-[#8FA8C7]
                       dark:hover:border-gold
                       dark:hover:bg-[#161E2E]
-                    "
+                    `}
                   >
                     <IconComponent size={16} />
                     <span>{tag.label}</span>
@@ -198,6 +228,7 @@ export default function Hero() {
                 whileHover={{ y: -3 }}
                 whileTap={{ scale: 0.98 }}
                 href="\PushpajaBommisetty_Resume_June2026.pdf"
+                download
                 className="
                   flex
                   items-center
@@ -230,14 +261,14 @@ export default function Hero() {
             initial={{ opacity: 0, y: 26 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex flex-col items-end gap-8"
+            className="hidden lg:flex flex-col items-center justify-center mt-55"
           >
             {/* Animated Stars */}
             <motion.div
               initial={{ opacity: 0, scale: 0.92 }}
-              animate={{ opacity: 1, scale: 1 }}
+              animate={{ opacity: 1, scale: 0.85 }}
               transition={{ delay: 0.25, duration: 0.9 }}
-              className="relative h-64 w-64"
+              className="relative h-56 lg:h-64 lg:w-64"
             >
               <motion.div
                 animate={{ rotate: 360 }}

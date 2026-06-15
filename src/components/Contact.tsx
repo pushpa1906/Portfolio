@@ -142,7 +142,7 @@ export default function Contact() {
 
           <div
             className="
-              mt-24
+              mt-45
               flex
               flex-col
               justify-between
