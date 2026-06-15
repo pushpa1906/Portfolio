@@ -7,7 +7,6 @@ const links = [
   "Projects",
   "Skills",
   "Education",
-  "Contact",
 ];
 
 export default function Navbar() {
