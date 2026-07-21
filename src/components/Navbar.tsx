@@ -33,10 +33,11 @@ return ( <header className="fixed top-0 z-50 w-full"> <div className="mx-auto ma
          dark:shadow-[0_10px_40px_rgba(0,0,0,0.3)]
        "
      >
-{/* Logo */} <div> <p className="text-xs uppercase tracking-[0.35em] text-[#355070] dark:text-[#8FA8C7]">
-Portfolio </p>
-
-```
+      {/* Logo */} 
+      <div> 
+        <p className="text-xs uppercase tracking-[0.35em] text-[#355070] dark:text-[#8FA8C7]">
+        Portfolio 
+        </p>
         <p className="font-semibold text-ink">
           Pushpaja Bommisetty
         </p>

@@ -53,69 +53,110 @@ export const experience = [
 
 export const projects = [
   {
-  title: "Health Database Management System",
-  subtitle: "Database Engineering Project",
-  description:
-    "Designed and implemented a normalized relational database for healthcare data management, leveraging MySQL, EER modeling, and advanced SQL queries to support analytics, reporting, and operational insights.",
+    title: "ApplyFlow",
+    subtitle: "Full-Stack Web Application",
+    grid: "lg:col-span-4",
 
-  technologies: [
-    "MySQL",
-    "SQL",
-    "Database Modeling",
-    "EER Diagrams",
-    "Data Analysis",
-  ],
+    description:
+      "Built a full-stack job application tracking platform that combines a modern web interface with Google Sheets. Users can manage applications through searchable tables, interactive dashboards, configurable dropdowns, and CRUD operations while keeping Google Sheets as the underlying data source.",
 
-  highlights: [
-    "20+ normalized tables",
-    "Foreign key relationships",
-    "Optimized reporting views",
-    "Operational analytics",
-  ],
-},
+    technologies: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "Django REST Framework",
+      "Google Sheets API",
+      "Recharts",
+      "REST APIs",
+    ],
+
+    highlights: [
+      "Responsive dashboard with analytics",
+      "Application CRUD operations",
+      "Search, filtering & sorting",
+      "Google Sheets integration",
+      "Reusable React components",
+      "Deployed on Vercel & Render",
+    ],
+
+    demo: "https://apply-flow-roan.vercel.app/",
+    github: "https://github.com/pushpa1906/ApplyFlow",
+  },
+  {
+    title: "Fake Currency Detection",
+    subtitle: "Image Processing Project",
+    grid: "lg:col-span-2",
+    description:
+      "Developed a MATLAB-based counterfeit currency detection system using image processing techniques to distinguish counterfeit Indian banknotes from genuine currency notes.",
+
+    technologies: [
+      "MATLAB",
+      "Image Processing",
+      "Computer Vision",
+      "Digital Image Analysis",
+    ],
+
+    highlights: [
+      "Grayscale conversion",
+      "HSV color analysis",
+      "Edge detection",
+      "Segmented strip counting",
+    ],
+  },
+  
 
   {
-  title: "Heart Disease Prediction",
-  subtitle: "Machine Learning Project",
-  description:
-    "Developed a predictive analytics system using supervised machine learning algorithms to assess the risk of heart disease based on patient clinical data. Performed data preprocessing, exploratory analysis, and model evaluation to improve prediction accuracy.",
+    title: "Heart Disease Prediction",
+    subtitle: "Machine Learning Project",
+    grid: "lg:col-span-2 lg:row-span-2",
+    description:
+      "Developed a predictive analytics system using supervised machine learning algorithms to assess the risk of heart disease based on patient clinical data. Performed data preprocessing, exploratory analysis, and model evaluation to improve prediction accuracy.",
 
-  technologies: [
-    "Python",
-    "Machine Learning",
-    "Pandas",
-    "NumPy",
-    "Scikit-learn",
-  ],
+    technologies: [
+      "Python",
+      "Machine Learning",
+      "Pandas",
+      "NumPy",
+      "Scikit-learn",
+    ],
 
-  highlights: [
-    "Clinical data analysis",
-    "Exploratory data analysis",
-    "Multiple model evaluation",
-    "95% accuracy with Random Forest",
-  ],
-},
-
+    highlights: [
+      "Clinical data analysis",
+      "Exploratory data analysis",
+      "Multiple model evaluation",
+      "95% accuracy with Random Forest",
+    ],
+  },
   {
-  title: "Fake Currency Detection",
-  subtitle: "Image Processing Project",
-  description:
-    "Developed a MATLAB-based counterfeit currency detection system using image processing techniques to distinguish counterfeit Indian banknotes from genuine currency notes.",
+    title: "Health Database Management System",
+    subtitle: "Database Engineering Project",
+    
+    grid: 
+    "lg:col-span-4 lg:row-span-2 ",
+    
+    description:
+      "Designed and implemented a normalized relational database for healthcare data management, leveraging MySQL, EER modeling, and advanced SQL queries to support analytics, reporting, and operational insights.",
 
-  technologies: [
-    "MATLAB",
-    "Image Processing",
-    "Computer Vision",
-    "Digital Image Analysis",
-  ],
+    technologies: [
+      "MySQL",
+      "SQL",
+      "Database Modeling",
+      "EER Diagrams",
+      "Data Analysis",
+    ],
 
-  highlights: [
-    "Grayscale conversion",
-    "HSV color analysis",
-    "Edge detection",
-    "Segmented strip counting",
-  ],
-}
+    highlights: [
+      "20+ normalized tables",
+      "Foreign key relationships",
+      "Optimized reporting views",
+      "Operational analytics",
+    ],
+  },
+
+
+
+
 ]
 
 export const skillGroups = {
