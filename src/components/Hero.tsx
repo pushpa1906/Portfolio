@@ -227,7 +227,7 @@ export default function Hero() {
               <motion.a
                 whileHover={{ y: -3 }}
                 whileTap={{ scale: 0.98 }}
-                href="\PushpajaBommisetty_Resume_June2026.pdf"
+                href="\PushpajaBommisetty_Resume_July2026.pdf"
                 download
                 className="
                   flex
