@@ -1,64 +1,113 @@
 export const personal = {
   name: "Pushpaja Bommisetty",
   title: "Software Developer",
-  email: "pushpaja.b@example.com",
+
+  email: "pushpaja.bommisetty1906@gmail.com",
+
   github: "https://github.com/pushpa1906",
-  linkedin: "https://linkedin.com/in/pushpaja-bommisetty",
+
+  linkedin:
+    "https://www.linkedin.com/in/pushpaja-bommisetty/",
 
   heroText:
-    "Creating modern web applications, interactive experiences, and technology solutions.",
+    "Creating modern web applications, intuitive user experiences, and technology solutions.",
 };
+
+/* =========================================================
+   EXPERIENCE
+========================================================= */
 
 export const experience = [
   {
     company: "Ceburu Systems, Inc.",
+
     role: "Software Development Engineer",
+
     duration: "Aug 2025 – May 2026",
+
     highlights: [
-      "Developed modern web applications using React, TypeScript, JavaScript, and REST APIs.",
-      "Built responsive user interfaces and reusable frontend components.",
-      "Integrated frontend applications with backend services.",
-      "Implemented filtering, search, import/export, and bulk operations.",
-      "Contributed to enterprise software and visualization interfaces.",
-      "Improved usability, performance, and software quality.",
+      "Developed and maintained full-stack application features using React, TypeScript, JavaScript, Django REST Framework, PostgreSQL, SQL, and REST APIs.",
+
+      "Built reusable React components and interactive network topology interfaces using React Hooks and React Flow.",
+
+      "Integrated frontend applications with backend REST APIs and JSON-based data flows.",
+
+      "Implemented search, filtering, bulk operations, import/export workflows, and data visualization features.",
+
+      "Worked on network management functionality including interactive maps, device information, and browser-based terminal experiences.",
+
+      "Improved application reliability and performance through testing, debugging, optimization, and iterative feature development.",
+
+      "Collaborated in Agile development workflows using Git and GitHub.",
     ],
   },
 
   {
     company: "University of Texas at Tyler",
-    role: "Technical Specialist",
+
+    role: "Web Developer",
+
     duration: "Jan 2024 – May 2025",
+
     highlights: [
-      "Maintained university websites and digital platforms.",
-      "Improved accessibility and user experience.",
-      "Created digital signage and promotional materials.",
-      "Supported AV systems and event technologies.",
-      "Managed secure document workflows.",
-      "Provided technical support across campus.",
+      "Developed and maintained university websites using Modern Campus CMS (Omni CMS), HTML5, CSS3, and JavaScript.",
+
+      "Created responsive and cross-browser compatible web experiences for university audiences.",
+
+      "Improved navigation, information architecture, page layouts, content organization, and usability across university web properties.",
+
+      "Applied WCAG 2.1 accessibility practices, semantic HTML, accessible navigation, and structured digital content.",
+
+      "Created digital signage, presentations, graphics, and promotional materials for university programs and events.",
+
+      "Collaborated with faculty, IT teams, and campus stakeholders on web content and digital communication improvements.",
+
+      "Managed 1,500+ student records using ImageNow / Perceptive Content while supporting FERPA-compliant document workflows.",
     ],
   },
 
   {
-    company: "CEMS",
+    company:
+      "Centre of Excellence in Maritime and Shipbuilding (CEMS)",
+
     role: "Machine Learning Intern",
+
     duration: "Jan 2022 – Aug 2022",
+
     highlights: [
-      "Performed data preprocessing and transformation.",
-      "Applied machine learning techniques.",
-      "Built analytical reports and visualizations.",
-      "Worked on classification and clustering projects.",
+      "Prepared and analyzed structured datasets using Python, Pandas, and NumPy.",
+
+      "Performed exploratory data analysis to identify patterns and trends.",
+
+      "Created analytical charts and visualizations using Matplotlib and Seaborn.",
+
+      "Applied machine learning techniques including classification, clustering, and predictive modeling.",
+
+      "Evaluated model results and gained hands-on experience with end-to-end data analysis workflows.",
     ],
   },
 ];
 
+/* =========================================================
+   PROJECTS
+========================================================= */
+
 export const projects = [
   {
     title: "ApplyFlow",
-    subtitle: "Full-Stack Web Application",
+
+    subtitle: "Job Application Tracking Platform",
+
     grid: "lg:col-span-4",
 
     description:
-      "Built a full-stack job application tracking platform that combines a modern web interface with Google Sheets. Users can manage applications through searchable tables, interactive dashboards, configurable dropdowns, and CRUD operations while keeping Google Sheets as the underlying data source.",
+      "A job application tracking platform for managing applications, follow-ups, and progress through a responsive dashboard connected to Google Sheets.",
+
+    focus: [
+      "Dashboard UX",
+      "Responsive UI",
+      "Data Visualization",
+    ],
 
     technologies: [
       "React",
@@ -68,75 +117,128 @@ export const projects = [
       "Django REST Framework",
       "Google Sheets API",
       "Recharts",
-      "REST APIs",
+      "Playwright",
     ],
 
     highlights: [
-      "Responsive dashboard with analytics",
       "Application CRUD operations",
-      "Search, filtering & sorting",
-      "Google Sheets integration",
-      "Reusable React components",
-      "Deployed on Vercel & Render",
+      "Search, filtering, and status tracking",
+      "Automatic follow-up date management",
+      "Dashboard analytics and application metrics",
+      "Google Sheets data integration",
+      "Responsive and reusable frontend components",
     ],
 
-    demo: "https://apply-flow-roan.vercel.app/",
-    github: "https://github.com/pushpa1906/ApplyFlow",
+    demo:
+      "https://apply-flow-roan.vercel.app/",
+
+    github:
+      "https://github.com/pushpa1906/ApplyFlow",
+
+    visual: "applyflow",
   },
+
   {
-    title: "Fake Currency Detection",
-    subtitle: "Image Processing Project",
+    title: "TintMint",
+
+    subtitle: "Color Palette Design Tool",
+
     grid: "lg:col-span-2",
+
     description:
-      "Developed a MATLAB-based counterfeit currency detection system using image processing techniques to distinguish counterfeit Indian banknotes from genuine currency notes.",
+      "A frontend color palette tool for generating, adjusting, previewing, saving, and exporting reusable color systems for websites and digital interfaces.",
+
+    focus: [
+      "UI/UX",
+      "Color Systems",
+      "Interaction Design",
+    ],
 
     technologies: [
-      "MATLAB",
-      "Image Processing",
-      "Computer Vision",
-      "Digital Image Analysis",
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "Playwright",
+      "LocalStorage",
     ],
 
     highlights: [
-      "Grayscale conversion",
-      "HSV color analysis",
-      "Edge detection",
-      "Segmented strip counting",
+      "Multiple color relationship modes",
+      "Palette generation and color editing",
+      "Interactive interface previews",
+      "Save and reuse palettes locally",
+      "Export palettes as CSS, JSON, or HEX",
+      "Responsive and keyboard-accessible interface",
     ],
+
+    demo:
+      "https://pushpa1906.github.io/TintMint/",
+
+    github:
+      "https://github.com/pushpa1906/TintMint",
+
+    visual: "tintmint",
   },
-  
 
   {
-    title: "Heart Disease Prediction",
-    subtitle: "Machine Learning Project",
-    grid: "lg:col-span-2 lg:row-span-2",
+    title: "Reparo",
+
+    subtitle: "Accessibility Utility",
+
+    grid: "lg:col-span-2",
+
     description:
-      "Developed a predictive analytics system using supervised machine learning algorithms to assess the risk of heart disease based on patient clinical data. Performed data preprocessing, exploratory analysis, and model evaluation to improve prediction accuracy.",
+      "A lightweight accessibility utility for evaluating color contrast and palette relationships using WCAG-based checks, live feedback, and accessible color suggestions.",
+
+    focus: [
+      "Accessibility",
+      "WCAG",
+      "Usability",
+    ],
 
     technologies: [
-      "Python",
-      "Machine Learning",
-      "Pandas",
-      "NumPy",
-      "Scikit-learn",
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "Vite",
+      "Cypress",
+      "axe-core",
     ],
 
     highlights: [
-      "Clinical data analysis",
-      "Exploratory data analysis",
-      "Multiple model evaluation",
-      "95% accuracy with Random Forest",
+      "WCAG contrast ratio checking",
+      "AA and AAA accessibility evaluation",
+      "Normal and large text testing",
+      "Accessible color suggestions",
+      "Palette relationship analysis",
+      "Keyboard and accessibility testing",
     ],
+
+    demo:
+      "https://pushpa1906.github.io/Reparo/#home",
+
+    github:
+      "https://github.com/pushpa1906/Reparo",
+
+    visual: "reparo",
   },
+
   {
     title: "Health Database Management System",
+
     subtitle: "Database Engineering Project",
-    
-    grid: 
-    "lg:col-span-4 lg:row-span-2 ",
-    
+
+    grid: "lg:col-span-4",
+
     description:
-      "Designed and implemented a normalized relational database for healthcare data management, leveraging MySQL, EER modeling, and advanced SQL queries to support analytics, reporting, and operational insights.",
+      "A normalized relational database designed for healthcare data management, reporting, and operational analysis using relational modeling and advanced SQL queries.",
+
+    focus: [
+      "Database Design",
+      "Data Modeling",
+      "Reporting",
+    ],
 
     technologies: [
       "MySQL",
@@ -149,59 +251,85 @@ export const projects = [
     highlights: [
       "20+ normalized tables",
       "Foreign key relationships",
+      "Structured healthcare data model",
       "Optimized reporting views",
-      "Operational analytics",
+      "Operational analytics queries",
     ],
+
+    visual: "database",
   },
+];
 
+/* =========================================================
+   OPTIONAL SKILL GROUP DATA
 
-
-
-]
+   Keep only if another component still imports skillGroups.
+========================================================= */
 
 export const skillGroups = {
   Frontend: [
     "React",
     "TypeScript",
     "JavaScript",
-    "HTML",
-    "CSS",
+    "HTML5",
+    "CSS3",
     "Tailwind CSS",
+    "React Hooks",
+    "React Flow",
   ],
 
-  Backend: [
-    "Node.js",
+  BackendAndAPIs: [
+    "Django",
     "Django REST Framework",
     "REST APIs",
-  ],
-
-  Databases: [
+    "JSON",
+    "API Integration",
+    "PostgreSQL",
     "MySQL",
     "SQL",
   ],
 
-  Programming: [
+  UIUXAndAccessibility: [
+    "Figma",
+    "Responsive Design",
+    "Information Architecture",
+    "WCAG 2.1",
+    "ARIA",
+    "Semantic HTML",
+    "Keyboard Accessibility",
+    "Color Contrast",
+  ],
+
+  WebAndCMS: [
+    "Omni CMS",
+    "Website Management",
+    "Web Accessibility",
+    "Cross-Browser Compatibility",
+    "Content Management",
+    "SEO Basics",
+  ],
+
+  DataAndAnalytics: [
     "Python",
-    "TypeScript",
-    "JavaScript",
-    "C",
+    "Pandas",
+    "NumPy",
+    "Matplotlib",
+    "Seaborn",
+    "Scikit-learn",
+    "Data Analysis",
+    "Machine Learning",
   ],
 
-  Cloud: [
-    "AWS Cloud Practitioner",
-    "Azure Data Factory",
-  ],
-
-  Tools: [
+  TestingAndTools: [
+    "Playwright",
+    "Cypress",
+    "axe-core",
     "Git",
     "GitHub",
     "Postman",
     "VS Code",
-  ],
-
-  Design: [
-    "Figma",
-    "Canva",
-    "Adobe Photoshop",
+    "Agile",
+    "Debugging",
+    "E2E Testing",
   ],
 };
