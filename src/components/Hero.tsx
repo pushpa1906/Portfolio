@@ -593,7 +593,7 @@ export default function Hero() {
                         scale: 0.98,
                       }
                 }
-                href="/PushpajaBommisetty_Resume_July2026.pdf"
+                href="/PushpajaBommisetty_Resume_August2026.pdf"
                 download
                 className="
                   inline-flex
