@@ -1,5 +1,16 @@
-import { motion } from "framer-motion";
-import { CheckCircle, Code2, Zap, Globe,type LucideIcon } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+
+import {
+  CheckCircle,
+  Code2,
+  Palette,
+  Globe,
+  type LucideIcon,
+} from "lucide-react";
+
+/* =========================================================
+   TYPES
+========================================================= */
 
 interface StatusBadgeProps {
   label: string;
@@ -14,53 +25,208 @@ interface ExperienceHighlightProps {
   delay: number;
 }
 
-const StatusBadge = ({ label, color = "green", delay }: StatusBadgeProps) => (
-  <motion.div
-    initial={{ opacity: 0, scale: 0.8 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ delay, duration: 0.5 }}
-    className={`
-      flex items-center gap-2 rounded-full px-4 py-2
-      ${color === "green" ? "bg-green-50 dark:bg-green-500/10" : "bg-blue-50 dark:bg-blue-500/10"}
-    `}
-  >
-    <CheckCircle size={16} className={color === "green" ? "text-green-600 dark:text-green-400" : "text-blue-600 dark:text-blue-400"} />
-    <span className={`text-sm font-medium ${color === "green" ? "text-green-700 dark:text-green-400" : "text-blue-700 dark:text-blue-400"}`}>
-      {label}
-    </span>
-  </motion.div>
-);
+/* =========================================================
+   STATUS BADGE
+========================================================= */
 
-const ExperienceHighlight = ({ icon: Icon, title, description, delay }: ExperienceHighlightProps) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ delay, duration: 0.6 }}
-    viewport={{ once: true }}
-    className="flex gap-4"
-  >
-    <Icon size={24} className="text-gold shrink-0 mt-1" />
-    <div>
-      <h4 className="font-semibold text-ink mb-1">{title}</h4>
-      <p className="text-sm text-muted">{description}</p>
-    </div>
-  </motion.div>
-);
+const StatusBadge = ({
+  label,
+  color = "green",
+  delay,
+}: StatusBadgeProps) => {
+  const reduceMotion = useReducedMotion();
+
+  return (
+    <motion.div
+      initial={
+        reduceMotion
+          ? false
+          : {
+              opacity: 0,
+              scale: 0.9,
+            }
+      }
+      whileInView={{
+        opacity: 1,
+        scale: 1,
+      }}
+      transition={{
+        delay: reduceMotion ? 0 : delay,
+        duration: reduceMotion ? 0 : 0.4,
+      }}
+      viewport={{ once: true }}
+      className={`
+        flex
+        items-center
+        gap-2
+        rounded-full
+        px-3.5
+        py-2
+
+        sm:px-4
+
+        ${
+          color === "green"
+            ? "bg-green-50 dark:bg-green-500/10"
+            : "bg-blue-50 dark:bg-blue-500/10"
+        }
+      `}
+    >
+      <CheckCircle
+        size={16}
+        aria-hidden="true"
+        className={`
+          shrink-0
+
+          ${
+            color === "green"
+              ? "text-green-600 dark:text-green-400"
+              : "text-blue-600 dark:text-blue-400"
+          }
+        `}
+      />
+
+      <span
+        className={`
+          text-xs
+          font-medium
+
+          sm:text-sm
+
+          ${
+            color === "green"
+              ? "text-green-700 dark:text-green-400"
+              : "text-blue-700 dark:text-blue-400"
+          }
+        `}
+      >
+        {label}
+      </span>
+    </motion.div>
+  );
+};
+
+/* =========================================================
+   EXPERIENCE HIGHLIGHT
+========================================================= */
+
+const ExperienceHighlight = ({
+  icon: Icon,
+  title,
+  description,
+  delay,
+}: ExperienceHighlightProps) => {
+  const reduceMotion = useReducedMotion();
+
+  return (
+    <motion.div
+      initial={
+        reduceMotion
+          ? false
+          : {
+              opacity: 0,
+              y: 12,
+            }
+      }
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      transition={{
+        delay: reduceMotion ? 0 : delay,
+        duration: reduceMotion ? 0 : 0.45,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.15,
+      }}
+      className="
+        flex
+        gap-3
+
+        sm:gap-4
+      "
+    >
+      <Icon
+        size={22}
+        aria-hidden="true"
+        className="
+          mt-0.5
+          shrink-0
+          text-gold
+
+          sm:mt-1
+          sm:h-6
+          sm:w-6
+        "
+      />
+
+      <div className="min-w-0">
+        <h4
+          className="
+            mb-1
+            font-semibold
+            text-ink
+          "
+        >
+          {title}
+        </h4>
+
+        <p
+          className="
+            text-sm
+            leading-6
+            text-muted
+
+            sm:leading-relaxed
+          "
+        >
+          {description}
+        </p>
+      </div>
+    </motion.div>
+  );
+};
+
+/* =========================================================
+   ABOUT
+========================================================= */
 
 export default function About() {
+  const reduceMotion = useReducedMotion();
+
   return (
-    <section className="relative py-24" id="about">
-      {/* Background elements */}
+    <section
+      className="
+        relative
+        overflow-hidden
+        py-16
+
+        sm:py-20
+
+        md:py-24
+      "
+      id="about"
+    >
+      {/* ========================================
+          BACKGROUND DECORATION
+      ========================================= */}
+
       <div
+        aria-hidden="true"
         className="
+          pointer-events-none
           absolute
           -right-40
           top-1/2
+          -z-10
+          hidden
           h-190
           w-190
           rounded-full
           blur-[170px]
-          -z-10
+
+          lg:block
         "
         style={{
           background:
@@ -68,190 +234,572 @@ export default function About() {
         }}
       />
 
-      <div className="mx-auto w-full max-w-7xl px-6">
-        {/* Section Header */}
+      {/* ========================================
+          CONTAINER
+      ========================================= */}
+
+      <div
+        className="
+          mx-auto
+          w-full
+          max-w-7xl
+          px-5
+
+          sm:px-6
+        "
+      >
+        {/* ========================================
+            SECTION HEADER
+        ========================================= */}
+
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="mb-16"
+          initial={
+            reduceMotion
+              ? false
+              : {
+                  opacity: 0,
+                  y: 14,
+                }
+          }
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.5,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.2,
+          }}
+          className="
+            mb-10
+
+            sm:mb-12
+
+            md:mb-16
+          "
         >
           <p className="section-label mb-4">
             ABOUT
           </p>
-          <h2 className="display-heading text-5xl text-ink dark:text-[#F3F4F6] md:text-7xl">
-            Turning curiosity into experience. 
-          </h2>
 
+          <h2
+            className="
+              display-heading
+              max-w-4xl
+              text-4xl
+              leading-tight
+              text-ink
+
+              sm:text-5xl
+
+              md:text-6xl
+
+              lg:text-7xl
+
+              dark:text-[#F3F4F6]
+            "
+          >
+            Turning curiosity into experience.
+          </h2>
         </motion.div>
 
-        {/* Main Content */}
-        <div className="grid gap-12 lg:grid-cols-[1fr_0.8fr]">
-          {/* Left - Bio Content */}
+        {/* ========================================
+            MAIN CONTENT
+        ========================================= */}
+
+        <div
+          className="
+            grid
+            gap-10
+
+            md:gap-12
+
+            lg:grid-cols-[1fr_0.8fr]
+          "
+        >
+          {/* ====================================
+              LEFT — BIO
+          ===================================== */}
+
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="space-y-6"
+            initial={
+              reduceMotion
+                ? false
+                : {
+                    opacity: 0,
+                    y: 14,
+                  }
+            }
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.5,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.1,
+            }}
+            className="
+              min-w-0
+              space-y-5
+
+              sm:space-y-6
+            "
           >
-            <p className="text-lg leading-relaxed text-muted">
-              What began as an interest in understanding how technology works evolved into a passion for software development and web technologies. Earning a{" "}
+            {/* BIO PARAGRAPH 1 */}
+
+            <p
+              className="
+                text-base
+                leading-7
+                text-muted
+
+                sm:text-lg
+                sm:leading-relaxed
+              "
+            >
+              What began as an interest in understanding how
+              technology works evolved into a passion for software
+              development and web technologies. Earning a{" "}
               <span className="font-semibold">
-                Master's degree in Computer Science from the University of Texas at Tyler
+                Master&apos;s degree in Computer Science from the
+                University of Texas at Tyler
               </span>{" "}
-              provided opportunities to further explore modern technologies, software development, and data-driven solutions.
+              provided opportunities to further explore modern
+              technologies, software development, and data-driven
+              solutions.
             </p>
 
-            <p className="text-lg leading-relaxed text-muted">
+            {/* BIO PARAGRAPH 2 */}
+
+            <p
+              className="
+                text-base
+                leading-7
+                text-muted
+
+                sm:text-lg
+                sm:leading-relaxed
+              "
+            >
               Over the years, I have contributed to{" "}
               <span className="font-semibold">
-                web applications, technology-driven projects, and digital platforms
+                web applications, technology-driven projects, and
+                digital platforms
               </span>{" "}
-              while continuously expanding my technical knowledge. I enjoy creating
-              solutions that are practical, user-focused, and designed to solve
-              real-world needs.
+              while continuously expanding my technical knowledge.
+              I enjoy creating solutions that are practical,
+              user-focused, and designed to solve real-world needs.
             </p>
 
-            <p className="text-lg leading-relaxed text-muted">
+            {/* BIO PARAGRAPH 3 */}
+
+            <p
+              className="
+                text-base
+                leading-7
+                text-muted
+
+                sm:text-lg
+                sm:leading-relaxed
+              "
+            >
               I value{" "}
               <span className="font-semibold">
-                continuous learning, collaboration, and professional growth
-              </span>.
-              Each project presents an opportunity to deepen my knowledge, refine my
-              skills, and contribute to meaningful outcomes through technology.
+                continuous learning, collaboration, and professional
+                growth
+              </span>
+              . Each project presents an opportunity to deepen my
+              knowledge, refine my skills, and contribute to
+              meaningful outcomes through technology.
             </p>
 
-            {/* Experience Highlights */}
-            <div className="mt-10 space-y-6">
-              <h3 className="text-xl font-bold text-ink">What I Bring</h3>
-              
+            {/* ====================================
+                WHAT I BRING
+            ===================================== */}
+
+            <div
+              className="
+                mt-8
+                space-y-5
+
+                sm:mt-10
+                sm:space-y-6
+              "
+            >
+              <h3
+                className="
+                  text-lg
+                  font-bold
+                  text-ink
+
+                  sm:text-xl
+                "
+              >
+                What I Bring
+              </h3>
+
+              {/* WEB DEVELOPMENT */}
+
               <ExperienceHighlight
                 icon={Globe}
                 title="Web Development"
-                description="Full web development expertise including responsive design, frontend frameworks (React, TypeScript), backend (Django), and modern web technologies. Building complete web applications from concept to deployment."
-                delay={0.3}
+                description="Experience building responsive web applications using React, TypeScript, modern frontend technologies, backend services, APIs, and content management systems."
+                delay={0.15}
               />
-              
+
+              {/* PROVEN EXPERIENCE */}
+
               <ExperienceHighlight
                 icon={Code2}
                 title="Proven Experience"
-                description="Real-world development experience at Ceburu and UT Tyler. Website management, responsive design implementation, backend integration, and full-stack project delivery across multiple technologies and platforms."
-                delay={0.4}
+                description="Real-world experience across software development, web platforms, frontend implementation, backend integration, accessibility, and digital technology environments."
+                delay={0.25}
               />
-              
+
+              {/* UI / UX */}
+
               <ExperienceHighlight
-                icon={Zap}
-                title="User-Centric & Growth Focused"
-                description="Passionate about creating intuitive interfaces and understanding user needs. Committed to continuous growth through learning, collaboration, and hands-on experience with modern software development practices."
-                delay={0.5}
+                icon={Palette}
+                title="UI/UX & User-Centered Design"
+                description="Interested in the intersection of frontend development and UI/UX, with a focus on creating intuitive, accessible, responsive, and visually thoughtful digital experiences."
+                delay={0.35}
               />
             </div>
           </motion.div>
 
-          {/* Right - Status & Education */}
+          {/* ====================================
+              RIGHT — STATUS / EDUCATION / VALUES
+          ===================================== */}
+
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="space-y-6"
+            initial={
+              reduceMotion
+                ? false
+                : {
+                    opacity: 0,
+                    y: 14,
+                  }
+            }
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.5,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.1,
+            }}
+            className="
+              min-w-0
+              space-y-4
+
+              sm:space-y-5
+
+              lg:space-y-6
+            "
           >
-            {/* Status Badges */}
-            <div className="space-y-3 flex flex-col items-start  ">
-              <StatusBadge label="Open to Work" color="green" delay={0.3} />
-              <StatusBadge label="Available Now" color="blue" delay={0.4} />
+            {/* ==================================
+                STATUS BADGES
+            =================================== */}
+
+            <div
+              className="
+                flex
+                flex-wrap
+                items-center
+                gap-2
+
+                sm:gap-3
+
+                lg:flex-col
+                lg:items-start
+              "
+            >
+              <StatusBadge
+                label="Open to Work"
+                color="green"
+                delay={0.15}
+              />
+
+              <StatusBadge
+                label="Available Now"
+                color="blue"
+                delay={0.2}
+              />
             </div>
 
-            {/* Education Box */}
+            {/* ==================================
+                EDUCATION
+            =================================== */}
+
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-              viewport={{ once: true }}
+              initial={
+                reduceMotion
+                  ? false
+                  : {
+                      opacity: 0,
+                      y: 12,
+                    }
+              }
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                delay: reduceMotion ? 0 : 0.2,
+                duration: reduceMotion ? 0 : 0.4,
+              }}
+              viewport={{
+                once: true,
+              }}
               className="
                 rounded-2xl
                 border
-                border-[#D6DCE5] dark:border-[#2A3445]
-                bg-white/70 dark:bg-[#161E2E]/70
-                p-6
+                border-[#D6DCE5]
+                bg-white/70
+                p-5
                 backdrop-blur
-                hover:border-[#355070] dark:hover:border-gold
-                transition-all
+                transition-colors
+
+                sm:p-6
+
+                lg:hover:border-[#355070]
+
+                dark:border-[#2A3445]
+                dark:bg-[#161E2E]/70
+
+                lg:dark:hover:border-gold
               "
             >
-              <p className="text-xs uppercase tracking-wider text-muted mb-3">Education</p>
-              <h3 className="font-semibold text-ink text-lg">
+              <p
+                className="
+                  mb-3
+                  text-xs
+                  uppercase
+                  tracking-wider
+                  text-muted
+                "
+              >
+                Education
+              </p>
+
+              <h3
+                className="
+                  text-base
+                  font-semibold
+                  text-ink
+
+                  sm:text-lg
+                "
+              >
                 MS Computer Science
               </h3>
-              <p className="text-sm text-[#355070] dark:text-[#8FA8C7] font-medium mt-1">University of Texas at Tyler</p>
-              
+
+              <p
+                className="
+                  mt-1
+                  text-sm
+                  font-medium
+                  leading-relaxed
+                  text-[#355070]
+
+                  dark:text-[#8FA8C7]
+                "
+              >
+                University of Texas at Tyler
+              </p>
             </motion.div>
 
-            {/* Experience Box */}
+            {/* ==================================
+                EXPERIENCE
+            =================================== */}
+
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.55, duration: 0.6 }}
-              viewport={{ once: true }}
+              initial={
+                reduceMotion
+                  ? false
+                  : {
+                      opacity: 0,
+                      y: 12,
+                    }
+              }
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                delay: reduceMotion ? 0 : 0.25,
+                duration: reduceMotion ? 0 : 0.4,
+              }}
+              viewport={{
+                once: true,
+              }}
               className="
                 rounded-2xl
                 border
-                border-[#D6DCE5] dark:border-[#2A3445]
-                bg-white/70 dark:bg-[#161E2E]/70
-                p-6
+                border-[#D6DCE5]
+                bg-white/70
+                p-5
                 backdrop-blur
-                hover:border-[#355070] dark:hover:border-gold
-                transition-all
+                transition-colors
+
+                sm:p-6
+
+                lg:hover:border-[#355070]
+
+                dark:border-[#2A3445]
+                dark:bg-[#161E2E]/70
+
+                lg:dark:hover:border-gold
               "
             >
-              <p className="text-xs uppercase tracking-wider text-muted mb-3">Experience</p>
+              <p
+                className="
+                  mb-3
+                  text-xs
+                  uppercase
+                  tracking-wider
+                  text-muted
+                "
+              >
+                Experience
+              </p>
+
               <div className="space-y-3">
+                {/* CEBURU */}
+
                 <div>
-                  <h3 className="font-semibold text-ink">Ceburu</h3>
-                  <p className="text-sm text-muted mt-1">Web development & frontend implementation</p>
+                  <h3 className="font-semibold text-ink">
+                    Ceburu
+                  </h3>
+
+                  <p
+                    className="
+                      mt-1
+                      text-sm
+                      leading-6
+                      text-muted
+                    "
+                  >
+                    Software development &amp; frontend engineering
+                  </p>
                 </div>
+
+                {/* UT TYLER */}
+
                 <div>
-                  <h3 className="font-semibold text-ink">UT Tyler</h3>
-                  <p className="text-sm text-muted mt-1">Website management & full development projects</p>
+                  <h3 className="font-semibold text-ink">
+                    UT Tyler
+                  </h3>
+
+                  <p
+                    className="
+                      mt-1
+                      text-sm
+                      leading-6
+                      text-muted
+                    "
+                  >
+                    Web development, CMS &amp; accessibility
+                  </p>
                 </div>
               </div>
             </motion.div>
 
-            {/* Key Values */}
+            {/* ==================================
+                CORE VALUES
+            =================================== */}
+
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-              viewport={{ once: true }}
+              initial={
+                reduceMotion
+                  ? false
+                  : {
+                      opacity: 0,
+                      y: 12,
+                    }
+              }
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                delay: reduceMotion ? 0 : 0.3,
+                duration: reduceMotion ? 0 : 0.4,
+              }}
+              viewport={{
+                once: true,
+              }}
               className="
                 rounded-2xl
                 border
-                border-[#D6DCE5] dark:border-[#2A3445]
-                bg-white/70 dark:bg-[#161E2E]/70
-                p-6
+                border-[#D6DCE5]
+                bg-white/70
+                p-5
                 backdrop-blur
+
+                sm:p-6
+
+                dark:border-[#2A3445]
+                dark:bg-[#161E2E]/70
               "
             >
-              <p className="text-xs uppercase tracking-wider text-muted mb-4">Core Values</p>
+              <p
+                className="
+                  mb-4
+                  text-xs
+                  uppercase
+                  tracking-wider
+                  text-muted
+                "
+              >
+                Core Values
+              </p>
+
               <ul className="space-y-3">
-                <li className="flex items-start gap-2">
-                  <span className="text-gold font-bold mt-0.5">→</span>
-                  <span className="text-sm text-ink">Clean, maintainable code</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-gold font-bold mt-0.5">→</span>
-                  <span className="text-sm text-ink">User-centric design</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-gold  font-bold mt-0.5">→</span>
-                  <span className="text-sm text-ink">Continuous learning</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-gold  font-bold mt-0.5">→</span>
-                  <span className="text-sm text-ink">Community contribution</span>
-                </li>
+                {[
+                  "Clean, maintainable code",
+                  "User-centric design",
+                  "Continuous learning",
+                  "Community contribution",
+                ].map((value) => (
+                  <li
+                    key={value}
+                    className="
+                      flex
+                      items-start
+                      gap-2
+                    "
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="
+                        mt-0.5
+                        font-bold
+                        text-gold
+                      "
+                    >
+                      →
+                    </span>
+
+                    <span
+                      className="
+                        text-sm
+                        leading-6
+                        text-ink
+                      "
+                    >
+                      {value}
+                    </span>
+                  </li>
+                ))}
               </ul>
             </motion.div>
           </motion.div>
