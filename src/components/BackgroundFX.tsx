@@ -1,46 +1,37 @@
 import { useEffect, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
 
 const LARGE_SCREEN_BREAKPOINT = 1024;
 
 export default function BackgroundFX() {
-  const [enableEffects, setEnableEffects] = useState(false);
-  const reduceMotion = useReducedMotion();
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia(
       `(min-width: ${LARGE_SCREEN_BREAKPOINT}px)`
     );
 
-    const updateEffects = () => {
-      setEnableEffects(mediaQuery.matches);
+    const updateScreenSize = () => {
+      setIsLargeScreen(mediaQuery.matches);
     };
 
-    updateEffects();
+    updateScreenSize();
 
-    mediaQuery.addEventListener("change", updateEffects);
+    mediaQuery.addEventListener("change", updateScreenSize);
 
     return () => {
-      mediaQuery.removeEventListener("change", updateEffects);
+      mediaQuery.removeEventListener("change", updateScreenSize);
     };
   }, []);
 
-  /*
-   * Full animated effects only run when:
-   * 1. Screen is at least 1024px
-   * 2. User has not requested reduced motion
-   */
-  const animateBackground = enableEffects && !reduceMotion;
-
   return (
     <div
-      aria-hidden="true"
-      className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
+      aria-hidden
+      className="fixed inset-0 -z-10 overflow-hidden"
     >
       {/* =========================================
           BASE BACKGROUND
-          Always rendered on every screen size
       ========================================== */}
+
       <div
         className="
           absolute
@@ -54,13 +45,13 @@ export default function BackgroundFX() {
 
       {/* =========================================
           MOBILE / TABLET
-          Static background only.
-          No Framer Motion elements are mounted.
+          Static, very subtle atmosphere
       ========================================== */}
 
-      {!enableEffects && (
+      {!isLargeScreen && (
         <>
-          {/* Very light static blue atmosphere */}
+          {/* Static blue atmosphere */}
+
           <div
             className="
               absolute
@@ -73,11 +64,12 @@ export default function BackgroundFX() {
             "
             style={{
               background:
-                "radial-gradient(circle, rgba(143,168,199,0.10), transparent 70%)",
+                "radial-gradient(circle, rgba(143,168,199,0.08), transparent 70%)",
             }}
           />
 
-          {/* Very light static gold atmosphere */}
+          {/* Static gold atmosphere */}
+
           <div
             className="
               absolute
@@ -90,21 +82,24 @@ export default function BackgroundFX() {
             "
             style={{
               background:
-                "radial-gradient(circle, rgba(201,168,106,0.07), transparent 70%)",
+                "radial-gradient(circle, rgba(201,168,106,0.05), transparent 70%)",
             }}
           />
         </>
       )}
 
       {/* =========================================
-          LARGE SCREENS
-          1024px+
+          DESKTOP
+          Static atmospheric lighting
       ========================================== */}
 
-      {enableEffects && (
+      {isLargeScreen && (
         <>
-          {/* Soft blue atmosphere */}
-          <motion.div
+          {/* =====================================
+              STATIC BLUE ATMOSPHERE
+          ====================================== */}
+
+          <div
             className="
               absolute
               -left-64
@@ -116,29 +111,15 @@ export default function BackgroundFX() {
             "
             style={{
               background:
-                "radial-gradient(circle, rgba(143,168,199,0.22), transparent 70%)",
+                "radial-gradient(circle, rgba(143,168,199,0.16), transparent 70%)",
             }}
-            animate={
-              animateBackground
-                ? {
-                    x: [0, 70, -30, 0],
-                    y: [0, 50, -40, 0],
-                  }
-                : undefined
-            }
-            transition={
-              animateBackground
-                ? {
-                    duration: 36,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }
-                : undefined
-            }
           />
 
-          {/* Champagne glow */}
-          <motion.div
+          {/* =====================================
+              STATIC GOLD ATMOSPHERE
+          ====================================== */}
+
+          <div
             className="
               absolute
               -right-72
@@ -146,35 +127,22 @@ export default function BackgroundFX() {
               h-237.5
               w-237.5
               rounded-full
-              opacity-100
+              opacity-80
               blur-[200px]
-              dark:opacity-70
+
+              dark:opacity-50
             "
             style={{
               background:
-                "radial-gradient(circle, rgba(201,168,106,0.12), transparent 70%)",
+                "radial-gradient(circle, rgba(201,168,106,0.07), transparent 70%)",
             }}
-            animate={
-              animateBackground
-                ? {
-                    x: [0, -60, 30, 0],
-                    y: [0, -35, 30, 0],
-                  }
-                : undefined
-            }
-            transition={
-              animateBackground
-                ? {
-                    duration: 42,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }
-                : undefined
-            }
           />
 
-          {/* Subtle slate depth */}
-          <motion.div
+          {/* =====================================
+              STATIC CENTER DEPTH
+          ====================================== */}
+
+          <div
             className="
               absolute
               left-1/2
@@ -184,37 +152,25 @@ export default function BackgroundFX() {
               -translate-x-1/2
               -translate-y-1/2
               rounded-full
+              opacity-70
               blur-[170px]
             "
             style={{
               background:
-                "radial-gradient(circle, rgba(53,80,112,0.07), transparent 70%)",
+                "radial-gradient(circle, rgba(53,80,112,0.05), transparent 70%)",
             }}
-            animate={
-              animateBackground
-                ? {
-                    scale: [1, 1.08, 1],
-                    opacity: [0.7, 1, 0.7],
-                  }
-                : undefined
-            }
-            transition={
-              animateBackground
-                ? {
-                    duration: 14,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }
-                : undefined
-            }
           />
 
-          {/* Technical grid */}
+          {/* =====================================
+              TECHNICAL GRID
+          ====================================== */}
+
           <div
             className="
               absolute
               inset-0
               opacity-[0.018]
+
               dark:opacity-[0.04]
             "
             style={{
