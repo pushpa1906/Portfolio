@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { ThemeToggle } from "./Themetoggle";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const links = ["About", "Experience", "Projects", "Skills", "Education"];
@@ -8,6 +8,9 @@ const links = ["About", "Experience", "Projects", "Skills", "Education"];
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const reduceMotion = useReducedMotion();
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
+  const brandRef = useRef<HTMLAnchorElement>(null);
 
   /* =========================================================
      MOBILE MENU BEHAVIOR
@@ -17,20 +20,63 @@ export default function Navbar() {
     if (!mobileMenuOpen) return;
 
     const previousOverflow = document.body.style.overflow;
+    const drawer = drawerRef.current;
+    const menuButton = menuButtonRef.current;
+    const brand = brandRef.current;
+    if (!drawer) return;
+
+    const focusableElements = () => Array.from(
+      drawer.querySelectorAll<HTMLElement>(
+        'a[href], button:not(:disabled), [tabindex]:not([tabindex="-1"])',
+      ),
+    ).filter((element) => element.tabIndex >= 0 && element.getClientRects().length > 0);
+
+    focusableElements()[0]?.focus({ preventScroll: true });
 
     document.body.style.overflow = "hidden";
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
+        event.preventDefault();
         setMobileMenuOpen(false);
+        return;
+      }
+      if (event.key === "Tab") {
+        const elements = focusableElements();
+        const first = elements[0];
+        const last = elements[elements.length - 1];
+        if (!first || !last) {
+          event.preventDefault();
+          drawer.focus({ preventScroll: true });
+        } else if (!drawer.contains(document.activeElement) || document.activeElement === drawer) {
+          event.preventDefault();
+          (event.shiftKey ? last : first).focus();
+        } else if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+    };
+
+    const handleFocusIn = (event: FocusEvent) => {
+      if (event.target instanceof Node && !drawer.contains(event.target)) {
+        (focusableElements()[0] ?? drawer).focus({ preventScroll: true });
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("focusin", handleFocusIn);
 
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("focusin", handleFocusIn);
+      // The mobile trigger is hidden after switching to the desktop layout.
+      const target = menuButton?.getClientRects().length ? menuButton : brand;
+      target?.focus({ preventScroll: true });
     };
   }, [mobileMenuOpen]);
 
@@ -124,6 +170,7 @@ export default function Navbar() {
           ================================================== */}
 
           <a
+            ref={brandRef}
             href="#home"
             aria-label="Go to homepage"
             className="
@@ -313,6 +360,7 @@ export default function Navbar() {
             <ThemeToggle />
 
             <button
+              ref={menuButtonRef}
               type="button"
               onClick={() => setMobileMenuOpen(true)}
               aria-label="Open navigation menu"
@@ -386,6 +434,8 @@ export default function Navbar() {
           ================================================== */}
 
           <motion.div
+            ref={drawerRef}
+            tabIndex={-1}
             role="dialog"
             aria-modal="true"
             aria-label="Navigation menu"

@@ -13,17 +13,26 @@ import Contact from "./components/Contact";
 function App() {
   return (
     <>
+      <a
+        className="skip-link"
+        href="#main-content"
+        onClick={() => document.getElementById("main-content")?.focus({ preventScroll: true })}
+      >
+        Skip to main content
+      </a>
       <ScrollProgress />
       <Background />
       <Constellation />
       <Navbar />
-      <Hero />
-      <About />
-      <Experience />
-      <Projects />
-      <Skills />
-      <Education />
-      <Contact />
+      <main id="main-content" tabIndex={-1}>
+        <Hero />
+        <About />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Education />
+        <Contact />
+      </main>
     </>
   );
 }

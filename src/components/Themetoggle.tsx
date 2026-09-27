@@ -1,16 +1,18 @@
 import { Sun, Moon } from "lucide-react";
 import { useTheme } from "./Theme";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
+  const reduceMotion = useReducedMotion();
 
   return (
     <motion.button
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.95 }}
+      type="button"
+      whileHover={reduceMotion ? undefined : { scale: 1.1 }}
+      whileTap={reduceMotion ? undefined : { scale: 0.95 }}
       onClick={toggleTheme}
-      aria-label="Toggle theme"
+      aria-label={`Switch to ${theme === "light" ? "dark" : "light"} theme`}
       className="
         relative
         p-2.5
