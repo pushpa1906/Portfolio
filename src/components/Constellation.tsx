@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 type Particle = {
   x: number;
@@ -12,57 +12,10 @@ type Particle = {
 const LINK_DISTANCE = 150;
 const MOUSE_RADIUS = 180;
 
-/*
- * Full constellation experience is desktop-only.
- * Tailwind's lg breakpoint is 1024px.
- */
-const LARGE_SCREEN_BREAKPOINT = 1024;
-
 export default function Constellation() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  /*
-   * Start disabled.
-   * This prevents the canvas from rendering before we know
-   * whether the device should use the constellation.
-   */
-  const [enabled, setEnabled] = useState(false);
-
-  /*
-   * Determine whether the constellation should exist.
-   *
-   * Requirements:
-   * - viewport must be at least 1024px
-   * - device should have a precise pointer such as a mouse/trackpad
-   *
-   * Phones and most tablets therefore never mount the canvas.
-   */
   useEffect(() => {
-    const mediaQuery = window.matchMedia(
-      `(min-width: ${LARGE_SCREEN_BREAKPOINT}px) and (pointer: fine)`
-    );
-
-    const updateEnabled = () => {
-      setEnabled(mediaQuery.matches);
-    };
-
-    updateEnabled();
-
-    mediaQuery.addEventListener("change", updateEnabled);
-
-    return () => {
-      mediaQuery.removeEventListener("change", updateEnabled);
-    };
-  }, []);
-
-  /*
-   * Constellation animation.
-   *
-   * This effect only runs when `enabled === true`.
-   */
-  useEffect(() => {
-    if (!enabled) return;
-
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -141,6 +94,8 @@ export default function Constellation() {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       createParticles();
+
+      if (prefersReducedMotion) drawFrame();
     };
 
     /*
@@ -208,7 +163,7 @@ export default function Constellation() {
 
           if (distance < LINK_DISTANCE) {
             const opacity =
-              (1 - distance / LINK_DISTANCE) * 0.18;
+              (1 - distance / LINK_DISTANCE) * 0.12;
 
             ctx.strokeStyle =
               `rgba(53, 80, 112, ${opacity})`;
@@ -284,10 +239,10 @@ export default function Constellation() {
 
         ctx.fillStyle = particle.gold
           ? `rgba(201, 168, 106, ${
-              near ? 0.9 : 0.55
+              near ? 0.9 : 0.4
             })`
           : `rgba(53, 80, 112, ${
-              near ? 0.8 : 0.4
+              near ? 0.8 : 0.28
             })`;
 
         ctx.fill();
@@ -347,9 +302,6 @@ export default function Constellation() {
     /*
      * Cleanup.
      *
-     * This also runs when the viewport changes
-     * from desktop to mobile because `enabled`
-     * becomes false.
      */
     return () => {
       cancelAnimationFrame(animationFrame);
@@ -369,30 +321,20 @@ export default function Constellation() {
         handlePointerLeave
       );
     };
-  }, [enabled]);
-
-  /*
-   * IMPORTANT:
-   *
-   * On mobile/tablet there isn't merely a hidden canvas.
-   * There is NO canvas at all.
-   */
-  if (!enabled) {
-    return null;
-  }
+  }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      aria-hidden="true"
-      className="
-        pointer-events-none
-        fixed
-        inset-0
-        -z-10
-        h-full
-        w-full
-      "
-    />
-  );
+  <canvas
+    ref={canvasRef}
+    aria-hidden="true"
+    className="
+      pointer-events-none
+      fixed
+      inset-0
+      z-0
+      h-full
+      w-full
+    "
+  />
+);
 }
