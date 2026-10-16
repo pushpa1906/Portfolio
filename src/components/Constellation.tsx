@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Particle = {
   x: number;
@@ -11,11 +11,25 @@ type Particle = {
 
 const LINK_DISTANCE = 150;
 const MOUSE_RADIUS = 180;
+const MIN_ANIMATION_WIDTH = 768;
 
 export default function Constellation() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
+    // Include touch tablets; only viewport width determines availability.
+    const query = window.matchMedia(`(min-width: ${MIN_ANIMATION_WIDTH}px)`);
+    const updateEnabled = () => setEnabled(query.matches);
+
+    updateEnabled();
+    query.addEventListener("change", updateEnabled);
+    return () => query.removeEventListener("change", updateEnabled);
+  }, []);
+
+  useEffect(() => {
+    if (!enabled) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -321,7 +335,9 @@ export default function Constellation() {
         handlePointerLeave
       );
     };
-  }, []);
+  }, [enabled]);
+
+  if (!enabled) return null;
 
   return (
   <canvas
